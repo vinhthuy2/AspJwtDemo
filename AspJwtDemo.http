@@ -1,6 +1,25 @@
 @AspJwtDemo_HostAddress = http://localhost:5298
+@AspJwtDemo_Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0aHV5QG1haWwuY29tIiwiZW1haWwiOiJ0aHV5QG1haWwuY29tIiwianRpIjoiNjdmNjA1NzYtZjJiOC00MzMwLTk1ZWEtMDcxNWI2MWQ3NDdlIiwidXNlcklkIjoidGh1eS1pZC0xMjM0IiwiYWRtaW4iOmZhbHNlLCJuYmYiOjE3MTU1OTMxNzcsImV4cCI6MTcxNTU5NDk3NywiaWF0IjoxNzE1NTkzMTc3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAifQ.0k29-8gJHqItgTeQ2zu0cMUrCixdkEkok0rCk8YlVB0
 
-GET {{AspJwtDemo_HostAddress}}/weatherforecast/
-Accept: application/json
+### Public Route
+GET {{AspJwtDemo_HostAddress}}/public-route
 
-###
+### Private Route
+GET {{AspJwtDemo_HostAddress}}/private-route
+Authorization: Bearer {{AspJwtDemo_Token}}
+
+### Admin Route
+GET {{AspJwtDemo_HostAddress}}/admin-route
+Authorization: Bearer {{AspJwtDemo_Token}}
+
+### Get Token
+POST {{AspJwtDemo_HostAddress}}/token
+Content-Type: application/json
+
+{
+    "id": "thuy-id-1234",
+    "email": "thuy@mail.com",
+    "customClaims": {
+      "admin": false
+    }
+}
